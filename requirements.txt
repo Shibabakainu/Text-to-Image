@@ -1,0 +1,8 @@
+diffusers[torch]
+transformers==4.26.0
+flask
+googletrans==3.1.0a0
+flask_cors
+flask_migrate
+flask_sqlalchemy
+pyngrok
