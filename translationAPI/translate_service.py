@@ -1,19 +1,7 @@
 # coding: utf-8
-"""
-
-Abstract::
-    -
-History::
-    - Ver.      Date            Author        History
-    -
-"""
-# 標準ライブラリ
-
 
 # 関連外部ライブラリ
 from googletrans import Translator
-
-# 内部ライブラリ
 
 
 class TranslateService:
