@@ -5,7 +5,7 @@ import os
 app = Flask(__name__)
 sd_service = SDService()
 
-# Define the static folder path
+# Define the path to the static folder
 STATIC_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
 
 # Ensure that the static folder exists
@@ -31,7 +31,7 @@ def generate():
     img.save(img_path)
 
     # Return the path to the image so it can be displayed on the frontend
-    return jsonify({"image_path": f"static/{image_filename}"})
+    return jsonify({"image_path": f"/static/{image_filename}"})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001)
