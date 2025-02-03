@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text-to-Image Generator</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <h1>Text-to-Image Generator</h1>
+  <form id="prompt-form">
+    <label for="prompt">Enter a Prompt:</label>
+    <input type="text" id="prompt" name="prompt" required>
+    <button type="submit">Generate Image</button>
+  </form>
+
+  <div id="image-container"></div>
+
+  <script>
+    document.getElementById('prompt-form').addEventListener('submit', async function (event) {
+      event.preventDefault();
+      const prompt = document.getElementById('prompt').value;
+      const formData = new FormData();
+      formData.append('prompt', prompt);
+
+      const response = await fetch('/generate', {
+        method: 'POST',
+        body: formData
+      });
+
+      const result = await response.json();
+      if (result.error) {
+        alert(result.error);
+      } else {
+        document.getElementById('image-container').innerHTML = `
+          <img src="${result.image_path}" alt="Generated Image">
+        `;
+      }
+    });
+  </script>
+</body>
+</html>

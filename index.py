@@ -1,12 +1,5 @@
 # coding: utf-8
-"""
 
-Abstract::
-    -
-History::
-    - Ver.      Date            Author        History
-    -
-"""
 # 標準ライブラリ
 import base64
 import os

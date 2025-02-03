@@ -1,0 +1,37 @@
+from flask import Flask, request, jsonify, render_template
+from StableDiffusion.sd_service import SDService
+import os
+
+app = Flask(__name__)
+sd_service = SDService()
+
+# Define the static folder path
+STATIC_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
+
+# Ensure that the static folder exists
+if not os.path.exists(STATIC_FOLDER):
+    os.makedirs(STATIC_FOLDER)
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/generate', methods=['POST'])
+def generate():
+    prompt = request.form.get('prompt')
+    if not prompt:
+        return jsonify({"error": "No prompt provided"}), 400
+
+    # Generate the image based on the prompt
+    img = sd_service.create_img(prompt)
+    
+    # Save the image to the static folder
+    image_filename = 'generated_image.png'
+    img_path = os.path.join(STATIC_FOLDER, image_filename)
+    img.save(img_path)
+
+    # Return the path to the image so it can be displayed on the frontend
+    return jsonify({"image_path": f"static/{image_filename}"})
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5001)
