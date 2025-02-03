@@ -1,20 +1,133 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Text-to-Image Generator</title>
-  <link rel="stylesheet" href="/static/styles.css">
+  <title>テキストから画像生成</title>
+  <style>
+    /* Basic styling for modern theme */
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f4f7fc;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #2d3e50;
+      color: white;
+      padding: 15px 30px;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #2d3e50;
+      padding: 10px 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #4f5b69;
+      border-radius: 5px;
+    }
+
+    .container {
+      width: 80%;
+      margin: 30px auto;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 32px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .form-container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      font-size: 18px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .image-container {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .image-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+  </style>
 </head>
 <body>
-  <h1>Text-to-Image Generator</h1>
-  <form id="prompt-form">
-    <label for="prompt">Enter a Prompt:</label>
-    <input type="text" id="prompt" name="prompt" required>
-    <button type="submit">Generate Image</button>
-  </form>
+  <!-- Navigation Bar -->
+  <header>
+    <h1>テキストから画像生成</h1>
+  </header>
 
-  <div id="image-container"></div>
+  <nav>
+    <a href="/">ホーム</a>
+    <a href="/login">ログイン</a>
+    <a href="/register">登録</a>
+  </nav>
+
+  <div class="container">
+    <!-- Main Content -->
+    <div class="form-container">
+      <h2>画像生成のためのプロンプトを入力してください</h2>
+      <form id="prompt-form">
+        <label for="prompt">プロンプト:</label>
+        <input type="text" id="prompt" name="prompt" required placeholder="例えば、'美しい風景'">
+        <button type="submit">画像生成</button>
+      </form>
+    </div>
+
+    <!-- Image Display -->
+    <div id="image-container" class="image-container"></div>
+  </div>
 
   <script>
     document.getElementById('prompt-form').addEventListener('submit', async function (event) {
@@ -33,7 +146,7 @@
         alert(result.error);
       } else {
         document.getElementById('image-container').innerHTML = `
-          <img src="${result.image_path}" alt="Generated Image">
+          <img src="${result.image_path}" alt="生成された画像">
         `;
       }
     });
