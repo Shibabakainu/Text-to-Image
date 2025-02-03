@@ -13,17 +13,11 @@
       padding: 0;
     }
 
-    header {
-      background-color: #2d3e50;
-      color: white;
-      padding: 15px 30px;
-      text-align: center;
-    }
-
+    /* Navigation Bar */
     nav {
       display: flex;
       justify-content: center;
-      background-color: #2d3e50;
+      background-color: #E1AFD1;
       padding: 10px 0;
     }
 
@@ -32,12 +26,24 @@
       text-decoration: none;
       padding: 10px 20px;
       font-size: 16px;
+      font-weight: bolder;
       transition: background-color 0.3s;
     }
 
     nav a:hover {
-      background-color: #4f5b69;
+      background-color: #7469B6;
       border-radius: 5px;
+    }
+
+    /* Header Section */
+    header {
+      background-image: url(../static/title.png);
+      background-position: center;
+      background-size: cover;
+      color: white;
+      padding: 15px 30px;
+      text-align: center;
+      height: 350px;
     }
 
     .container {
@@ -47,13 +53,15 @@
     }
 
     h1 {
-      font-size: 32px;
-      color: #333;
+      font-family:Comic Sans MS, Comic Sans, cursive;
+      font-size: 50px;
+      color: white;
+      margin-top: 70px;
       margin-bottom: 20px;
     }
 
     .form-container {
-      background-color: white;
+      background-color: #9290C3;
       padding: 30px;
       border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -103,16 +111,18 @@
   </style>
 </head>
 <body>
-  <!-- Navigation Bar -->
-  <header>
-    <h1>テキストから画像生成</h1>
-  </header>
 
+  <!-- Navigation Bar -->
   <nav>
     <a href="/">ホーム</a>
     <a href="/login">ログイン</a>
     <a href="/register">登録</a>
   </nav>
+
+  <!-- Header Section with Title -->
+  <header>
+    <h1>テキストから画像生成</h1>
+  </header>
 
   <div class="container">
     <!-- Main Content -->
