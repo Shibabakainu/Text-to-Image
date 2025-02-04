@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>login</title>
+  <style>
+    /* Basic styling for modern theme */
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f4f7fc;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Navigation Bar */
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #E1AFD1;
+      padding: 10px 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bolder;
+      transition: background-color 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #7469B6;
+      border-radius: 5px;
+    }
+
+    /* Header Section */
+    header {
+      background-image: url(../static/title.png);
+      background-position: center;
+      background-size: cover;
+      color: white;
+      padding: 15px 30px;
+      text-align: center;
+      height: 350px;
+    }
+
+    .container {
+      width: 80%;
+      margin: 30px auto;
+      text-align: center;
+    }
+
+    h1 {
+      font-family:Comic Sans MS, Comic Sans, cursive;
+      font-size: 50px;
+      color: white;
+      margin-top: 70px;
+      margin-bottom: 20px;
+    }
+
+    .form-container {
+        height: 800px;
+      background-color: #9290C3;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      font-size: 18px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .image-container {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .image-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <a href="/">ホーム</a>
+    <a href="/login">ログイン</a>
+    <a href="/register">登録</a>
+  </nav>
+
+  <!-- Header Section with Title -->
+  <header>
+    <h1>テキストから画像生成</h1>
+  </header>
+
+  <div class="container">
+    <!-- Main Content -->
+    <div class="form-container">
+        <img src="{{ url_for('static', filename='siitake.png') }}" alt="Image">
+        
+    </div>
+  </div>
+</body>
+</html>
